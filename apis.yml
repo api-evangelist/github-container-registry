@@ -1,0 +1,28 @@
+aid: github-container-registry
+name: GitHub Container Registry
+description: >-
+  GitHub Container Registry stores container images within your GitHub organization or personal account and allows you to associate images with repositories.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Containers
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: github-container-registry:github-container-registry
+    name: GitHub Container Registry
+    description: >-
+      GitHub Container Registry stores container images within your GitHub organization or personal account and allows you to associate images with repositories.
+    humanURL: https://github.com/api-evangelist/github-container-registry
+    tags:
+      - Containers
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/github-container-registry
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
