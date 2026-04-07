@@ -5,11 +5,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Containers
-  - Registry
   - Container Images
+  - Containers
   - GitHub
   - Packages
+  - Registry
 url: >-
   https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -22,10 +22,10 @@ apis:
       GitHub Container Registry stores container images within your GitHub organization or personal account, allows you to associate images with repositories, and provides fine-grained permissions with integration into GitHub Actions workflows.
     humanURL: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
     tags:
-      - Containers
-      - Registry
       - Container Images
+      - Containers
       - GitHub
+      - Registry
     properties:
       - type: Documentation
         url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
