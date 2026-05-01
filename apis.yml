@@ -13,7 +13,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-03-26'
+modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
   - aid: github-container-registry:github-container-registry
@@ -21,6 +21,7 @@ apis:
     description: >-
       GitHub Container Registry stores container images within your GitHub organization or personal account, allows you to associate images with repositories, and provides fine-grained permissions with integration into GitHub Actions workflows.
     humanURL: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+    baseURL: https://api.github.com
     tags:
       - Container Images
       - Containers
@@ -31,6 +32,14 @@ apis:
         url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
       - type: Getting Started
         url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
+      - type: API Documentation
+        url: https://docs.github.com/en/rest/packages/packages
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/openapi/github-container-registry-openapi.yml
+      - type: Capabilities
+        url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
+      - type: Rules
+        url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
       - type: Pricing
         url: https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
 common:

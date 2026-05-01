@@ -1,0 +1,22 @@
+aid: github-container-registry:rules
+name: GitHub Container Registry Rules
+description: Operational rules and constraints for using GitHub Container Registry and the GitHub Packages API.
+rules:
+  - name: Authentication
+    description: ghcr.io image push/pull requires a Personal Access Token (classic) or GITHUB_TOKEN with appropriate scopes.
+  - name: Required Scopes
+    description: read:packages for pulls, write:packages for pushes, delete:packages for removals.
+  - name: Personal Access Token Classic Only
+    description: GitHub Packages currently supports authentication only with personal access tokens (classic) for individual users.
+  - name: Visibility Inheritance
+    description: Container package visibility can be public, private, or internal and is independent from the source repository unless linked.
+  - name: Repository Linking
+    description: Packages can be associated with a repository to inherit access control and appear in the repository UI.
+  - name: OCI Distribution Spec
+    description: Image push/pull operations conform to the OCI Distribution Spec at ghcr.io and Docker Image Manifest V2 Schema 2.
+  - name: REST API Base
+    description: All package management endpoints are served from https://api.github.com.
+  - name: Rate Limits
+    description: GitHub REST API enforces standard rate limits; container blob requests at ghcr.io have separate limits.
+  - name: GitHub Actions Integration
+    description: GITHUB_TOKEN within Actions can publish and consume container packages associated with the workflow's repository.

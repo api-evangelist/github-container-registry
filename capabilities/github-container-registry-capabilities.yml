@@ -1,0 +1,40 @@
+aid: github-container-registry:capabilities
+name: GitHub Container Registry Capabilities
+description: Capabilities exposed by GitHub Container Registry through GitHub Packages API and OCI Distribution at ghcr.io.
+capabilities:
+  - name: List Org Container Packages
+    description: List all container packages owned by an organization.
+    method: GET
+    path: /orgs/{org}/packages?package_type=container
+  - name: Get Org Container Package
+    description: Retrieve metadata for a single container package within an org.
+    method: GET
+    path: /orgs/{org}/packages/container/{package_name}
+  - name: Delete Org Container Package
+    description: Delete a container package owned by an organization.
+    method: DELETE
+    path: /orgs/{org}/packages/container/{package_name}
+  - name: Restore Org Container Package
+    description: Restore a previously deleted container package.
+    method: POST
+    path: /orgs/{org}/packages/container/{package_name}/restore
+  - name: List Org Package Versions
+    description: List versions of a container package owned by an organization.
+    method: GET
+    path: /orgs/{org}/packages/container/{package_name}/versions
+  - name: Delete Org Package Version
+    description: Delete a specific version of a container package.
+    method: DELETE
+    path: /orgs/{org}/packages/container/{package_name}/versions/{package_version_id}
+  - name: List User Container Packages
+    description: List container packages owned by the authenticated user.
+    method: GET
+    path: /user/packages?package_type=container
+  - name: Push Image (OCI)
+    description: Push a container image to ghcr.io using the OCI Distribution Spec.
+    method: PUT
+    path: ghcr.io/v2/{namespace}/{repository}/manifests/{reference}
+  - name: Pull Image (OCI)
+    description: Pull a container image from ghcr.io using the OCI Distribution Spec.
+    method: GET
+    path: ghcr.io/v2/{namespace}/{repository}/manifests/{reference}
