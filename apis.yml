@@ -30,7 +30,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
       - type: API Documentation
         url: https://docs.github.com/en/rest/packages/packages
@@ -47,17 +47,17 @@ common:
     url: https://github.com/features/packages
   - type: Documentation
     url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-  - type: Getting Started
+  - type: GettingStarted
     url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/github
   - type: Pricing
     url: https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
   - type: Blog
     url: https://github.blog/
-  - type: Status
+  - type: StatusPage
     url: https://www.githubstatus.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://github.com/signup
 maintainers:
   - FN: Kin Lane
