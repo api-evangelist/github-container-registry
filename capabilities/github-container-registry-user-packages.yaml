@@ -1,0 +1,359 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GitHub Container Registry API — User Packages
+  description: 'GitHub Container Registry API — User Packages. 7 operations. Lead operation: List packages for the authenticated
+    user. Self-contained Naftiko capability covering one Github Container Registry business surface.'
+  tags:
+  - Github Container Registry
+  - User Packages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GITHUB_CONTAINER_REGISTRY_API_KEY: GITHUB_CONTAINER_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: github-container-registry-user-packages
+    baseUri: https://api.github.com
+    description: GitHub Container Registry API — User Packages business capability. Self-contained, no shared references.
+    resources:
+    - name: user-packages
+      path: /user/packages
+      operations:
+      - name: listuserpackages
+        method: GET
+        description: List packages for the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: query
+          type: string
+          required: true
+    - name: user-packages-package_type-package_name
+      path: /user/packages/{package_type}/{package_name}
+      operations:
+      - name: getuserpackage
+        method: GET
+        description: Get a package for the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+      - name: deleteuserpackage
+        method: DELETE
+        description: Delete a package for the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: user-packages-package_type-package_name-restore
+      path: /user/packages/{package_type}/{package_name}/restore
+      operations:
+      - name: restoreuserpackage
+        method: POST
+        description: Restore a package for the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: user-packages-package_type-package_name-versions
+      path: /user/packages/{package_type}/{package_name}/versions
+      operations:
+      - name: listuserpackageversions
+        method: GET
+        description: List package versions for a package owned by the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: user-packages-package_type-package_name-versions-package_version_id
+      path: /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+      operations:
+      - name: getuserpackageversion
+        method: GET
+        description: Get a package version for the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+        - name: package_version_id
+          in: path
+          type: integer
+          required: true
+      - name: deleteuserpackageversion
+        method: DELETE
+        description: Delete a package version for the authenticated user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+        - name: package_version_id
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GITHUB_CONTAINER_REGISTRY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: github-container-registry-user-packages-rest
+    port: 8080
+    description: REST adapter for GitHub Container Registry API — User Packages. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/user/packages
+      name: user-packages
+      description: REST surface for user-packages.
+      operations:
+      - method: GET
+        name: listuserpackages
+        description: List packages for the authenticated user
+        call: github-container-registry-user-packages.listuserpackages
+        with:
+          package_type: rest.package_type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/packages/{package-type}/{package-name}
+      name: user-packages-package-type-package-name
+      description: REST surface for user-packages-package_type-package_name.
+      operations:
+      - method: GET
+        name: getuserpackage
+        description: Get a package for the authenticated user
+        call: github-container-registry-user-packages.getuserpackage
+        with:
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuserpackage
+        description: Delete a package for the authenticated user
+        call: github-container-registry-user-packages.deleteuserpackage
+        with:
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/packages/{package-type}/{package-name}/restore
+      name: user-packages-package-type-package-name-restore
+      description: REST surface for user-packages-package_type-package_name-restore.
+      operations:
+      - method: POST
+        name: restoreuserpackage
+        description: Restore a package for the authenticated user
+        call: github-container-registry-user-packages.restoreuserpackage
+        with:
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/packages/{package-type}/{package-name}/versions
+      name: user-packages-package-type-package-name-versions
+      description: REST surface for user-packages-package_type-package_name-versions.
+      operations:
+      - method: GET
+        name: listuserpackageversions
+        description: List package versions for a package owned by the authenticated user
+        call: github-container-registry-user-packages.listuserpackageversions
+        with:
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/packages/{package-type}/{package-name}/versions/{package-version-id}
+      name: user-packages-package-type-package-name-versions-package-version-id
+      description: REST surface for user-packages-package_type-package_name-versions-package_version_id.
+      operations:
+      - method: GET
+        name: getuserpackageversion
+        description: Get a package version for the authenticated user
+        call: github-container-registry-user-packages.getuserpackageversion
+        with:
+          package_type: rest.package_type
+          package_name: rest.package_name
+          package_version_id: rest.package_version_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuserpackageversion
+        description: Delete a package version for the authenticated user
+        call: github-container-registry-user-packages.deleteuserpackageversion
+        with:
+          package_type: rest.package_type
+          package_name: rest.package_name
+          package_version_id: rest.package_version_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: github-container-registry-user-packages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for GitHub Container Registry API — User Packages. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-packages-authenticated-user
+      description: List packages for the authenticated user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-packages.listuserpackages
+      with:
+        package_type: tools.package_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-authenticated-user
+      description: Get a package for the authenticated user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-packages.getuserpackage
+      with:
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-package-authenticated-user
+      description: Delete a package for the authenticated user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: github-container-registry-user-packages.deleteuserpackage
+      with:
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restore-package-authenticated-user
+      description: Restore a package for the authenticated user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: github-container-registry-user-packages.restoreuserpackage
+      with:
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-package-versions-package-owned
+      description: List package versions for a package owned by the authenticated user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-packages.listuserpackageversions
+      with:
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-version-authenticated-user
+      description: Get a package version for the authenticated user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-packages.getuserpackageversion
+      with:
+        package_type: tools.package_type
+        package_name: tools.package_name
+        package_version_id: tools.package_version_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-package-version-authenticated-user
+      description: Delete a package version for the authenticated user
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: github-container-registry-user-packages.deleteuserpackageversion
+      with:
+        package_type: tools.package_type
+        package_name: tools.package_name
+        package_version_id: tools.package_version_id
+      outputParameters:
+      - type: object
+        mapping: $.

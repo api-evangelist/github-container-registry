@@ -1,0 +1,460 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GitHub Container Registry API — Organization Packages
+  description: 'GitHub Container Registry API — Organization Packages. 8 operations. Lead operation: List packages for an
+    organization. Self-contained Naftiko capability covering one Github Container Registry business surface.'
+  tags:
+  - Github Container Registry
+  - Organization Packages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GITHUB_CONTAINER_REGISTRY_API_KEY: GITHUB_CONTAINER_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: github-container-registry-organization-packages
+    baseUri: https://api.github.com
+    description: GitHub Container Registry API — Organization Packages business capability. Self-contained, no shared references.
+    resources:
+    - name: orgs-org-packages
+      path: /orgs/{org}/packages
+      operations:
+      - name: listorgpackages
+        method: GET
+        description: List packages for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: query
+          type: string
+          required: true
+    - name: orgs-org-packages-package_type-package_name
+      path: /orgs/{org}/packages/{package_type}/{package_name}
+      operations:
+      - name: getorgpackage
+        method: GET
+        description: Get a package for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+      - name: deleteorgpackage
+        method: DELETE
+        description: Delete a package for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: orgs-org-packages-package_type-package_name-restore
+      path: /orgs/{org}/packages/{package_type}/{package_name}/restore
+      operations:
+      - name: restoreorgpackage
+        method: POST
+        description: Restore a package for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: orgs-org-packages-package_type-package_name-versions
+      path: /orgs/{org}/packages/{package_type}/{package_name}/versions
+      operations:
+      - name: listorgpackageversions
+        method: GET
+        description: Get all package versions for a package owned by an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: orgs-org-packages-package_type-package_name-versions-package_version_id
+      path: /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+      operations:
+      - name: getorgpackageversion
+        method: GET
+        description: Get a package version for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+        - name: package_version_id
+          in: path
+          type: integer
+          required: true
+      - name: deleteorgpackageversion
+        method: DELETE
+        description: Delete a package version for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+        - name: package_version_id
+          in: path
+          type: integer
+          required: true
+    - name: orgs-org-packages-package_type-package_name-versions-package_version_id-restore
+      path: /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+      operations:
+      - name: restoreorgpackageversion
+        method: POST
+        description: Restore a package version for an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+        - name: package_version_id
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GITHUB_CONTAINER_REGISTRY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: github-container-registry-organization-packages-rest
+    port: 8080
+    description: REST adapter for GitHub Container Registry API — Organization Packages. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/orgs/{org}/packages
+      name: orgs-org-packages
+      description: REST surface for orgs-org-packages.
+      operations:
+      - method: GET
+        name: listorgpackages
+        description: List packages for an organization
+        call: github-container-registry-organization-packages.listorgpackages
+        with:
+          org: rest.org
+          package_type: rest.package_type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{org}/packages/{package-type}/{package-name}
+      name: orgs-org-packages-package-type-package-name
+      description: REST surface for orgs-org-packages-package_type-package_name.
+      operations:
+      - method: GET
+        name: getorgpackage
+        description: Get a package for an organization
+        call: github-container-registry-organization-packages.getorgpackage
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteorgpackage
+        description: Delete a package for an organization
+        call: github-container-registry-organization-packages.deleteorgpackage
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{org}/packages/{package-type}/{package-name}/restore
+      name: orgs-org-packages-package-type-package-name-restore
+      description: REST surface for orgs-org-packages-package_type-package_name-restore.
+      operations:
+      - method: POST
+        name: restoreorgpackage
+        description: Restore a package for an organization
+        call: github-container-registry-organization-packages.restoreorgpackage
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{org}/packages/{package-type}/{package-name}/versions
+      name: orgs-org-packages-package-type-package-name-versions
+      description: REST surface for orgs-org-packages-package_type-package_name-versions.
+      operations:
+      - method: GET
+        name: listorgpackageversions
+        description: Get all package versions for a package owned by an organization
+        call: github-container-registry-organization-packages.listorgpackageversions
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{org}/packages/{package-type}/{package-name}/versions/{package-version-id}
+      name: orgs-org-packages-package-type-package-name-versions-package-version-id
+      description: REST surface for orgs-org-packages-package_type-package_name-versions-package_version_id.
+      operations:
+      - method: GET
+        name: getorgpackageversion
+        description: Get a package version for an organization
+        call: github-container-registry-organization-packages.getorgpackageversion
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+          package_version_id: rest.package_version_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteorgpackageversion
+        description: Delete a package version for an organization
+        call: github-container-registry-organization-packages.deleteorgpackageversion
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+          package_version_id: rest.package_version_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orgs/{org}/packages/{package-type}/{package-name}/versions/{package-version-id}/restore
+      name: orgs-org-packages-package-type-package-name-versions-package-version-id-restore
+      description: REST surface for orgs-org-packages-package_type-package_name-versions-package_version_id-restore.
+      operations:
+      - method: POST
+        name: restoreorgpackageversion
+        description: Restore a package version for an organization
+        call: github-container-registry-organization-packages.restoreorgpackageversion
+        with:
+          org: rest.org
+          package_type: rest.package_type
+          package_name: rest.package_name
+          package_version_id: rest.package_version_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: github-container-registry-organization-packages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for GitHub Container Registry API — Organization Packages. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-packages-organization
+      description: List packages for an organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-organization-packages.listorgpackages
+      with:
+        org: tools.org
+        package_type: tools.package_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-organization
+      description: Get a package for an organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-organization-packages.getorgpackage
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-package-organization
+      description: Delete a package for an organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: github-container-registry-organization-packages.deleteorgpackage
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restore-package-organization
+      description: Restore a package for an organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: github-container-registry-organization-packages.restoreorgpackage
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-package-versions-package
+      description: Get all package versions for a package owned by an organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-organization-packages.listorgpackageversions
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-version-organization
+      description: Get a package version for an organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-organization-packages.getorgpackageversion
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+        package_version_id: tools.package_version_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-package-version-organization
+      description: Delete a package version for an organization
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: github-container-registry-organization-packages.deleteorgpackageversion
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+        package_version_id: tools.package_version_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restore-package-version-organization
+      description: Restore a package version for an organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: github-container-registry-organization-packages.restoreorgpackageversion
+      with:
+        org: tools.org
+        package_type: tools.package_type
+        package_name: tools.package_name
+        package_version_id: tools.package_version_id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,191 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GitHub Container Registry API — User Namespace Packages
+  description: 'GitHub Container Registry API — User Namespace Packages. 3 operations. Lead operation: List packages for a
+    user. Self-contained Naftiko capability covering one Github Container Registry business surface.'
+  tags:
+  - Github Container Registry
+  - User Namespace Packages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GITHUB_CONTAINER_REGISTRY_API_KEY: GITHUB_CONTAINER_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: github-container-registry-user-namespace-packages
+    baseUri: https://api.github.com
+    description: GitHub Container Registry API — User Namespace Packages business capability. Self-contained, no shared references.
+    resources:
+    - name: users-username-packages
+      path: /users/{username}/packages
+      operations:
+      - name: listpackagesforuser
+        method: GET
+        description: List packages for a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: username
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: query
+          type: string
+          required: true
+    - name: users-username-packages-package_type-package_name
+      path: /users/{username}/packages/{package_type}/{package_name}
+      operations:
+      - name: getpackageforuser
+        method: GET
+        description: Get a package for a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: username
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    - name: users-username-packages-package_type-package_name-versions
+      path: /users/{username}/packages/{package_type}/{package_name}/versions
+      operations:
+      - name: listpackageversionsforuser
+        method: GET
+        description: List package versions for a package owned by a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: username
+          in: path
+          type: string
+          required: true
+        - name: package_type
+          in: path
+          type: string
+          required: true
+        - name: package_name
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GITHUB_CONTAINER_REGISTRY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: github-container-registry-user-namespace-packages-rest
+    port: 8080
+    description: REST adapter for GitHub Container Registry API — User Namespace Packages. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/{username}/packages
+      name: users-username-packages
+      description: REST surface for users-username-packages.
+      operations:
+      - method: GET
+        name: listpackagesforuser
+        description: List packages for a user
+        call: github-container-registry-user-namespace-packages.listpackagesforuser
+        with:
+          username: rest.username
+          package_type: rest.package_type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{username}/packages/{package-type}/{package-name}
+      name: users-username-packages-package-type-package-name
+      description: REST surface for users-username-packages-package_type-package_name.
+      operations:
+      - method: GET
+        name: getpackageforuser
+        description: Get a package for a user
+        call: github-container-registry-user-namespace-packages.getpackageforuser
+        with:
+          username: rest.username
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{username}/packages/{package-type}/{package-name}/versions
+      name: users-username-packages-package-type-package-name-versions
+      description: REST surface for users-username-packages-package_type-package_name-versions.
+      operations:
+      - method: GET
+        name: listpackageversionsforuser
+        description: List package versions for a package owned by a user
+        call: github-container-registry-user-namespace-packages.listpackageversionsforuser
+        with:
+          username: rest.username
+          package_type: rest.package_type
+          package_name: rest.package_name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: github-container-registry-user-namespace-packages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for GitHub Container Registry API — User Namespace Packages. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-packages-user
+      description: List packages for a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-namespace-packages.listpackagesforuser
+      with:
+        username: tools.username
+        package_type: tools.package_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-package-user
+      description: Get a package for a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-namespace-packages.getpackageforuser
+      with:
+        username: tools.username
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-package-versions-package-owned
+      description: List package versions for a package owned by a user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: github-container-registry-user-namespace-packages.listpackageversionsforuser
+      with:
+        username: tools.username
+        package_type: tools.package_type
+        package_name: tools.package_name
+      outputParameters:
+      - type: object
+        mapping: $.
