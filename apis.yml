@@ -66,6 +66,8 @@ common:
   url: https://www.githubstatus.com/
 - type: SignUp
   url: https://github.com/signup
+- type: LLMsTxt
+  url: https://docs.github.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
