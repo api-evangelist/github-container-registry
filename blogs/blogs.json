@@ -2,12 +2,20 @@
   "repo": "github-container-registry",
   "feeds": [
     {
-      "source": "https://github.blog/",
+      "source": "https://github.blog/feed/",
       "feed_url": "https://github.blog/feed/",
-      "title": "The GitHub Blog",
-      "saved": 8
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages",
+      "feed_url": "https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 25,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 32,
+  "fetched": "2026-06-01T23:35:02Z"
 }
