@@ -1,73 +1,74 @@
 aid: github-container-registry
 name: GitHub Container Registry
-description: GitHub Container Registry stores container images within your GitHub organization or personal account, allows
-  you to associate images with repositories, and provides fine-grained permissions for managing access. It supports Docker
-  and OCI image formats and is integrated with GitHub Actions for automated workflows.
+description: >-
+  GitHub Container Registry stores container images within your GitHub organization or personal account, allows you to
+  associate images with repositories, and provides fine-grained permissions for managing access. It supports Docker and
+  OCI image formats and is integrated with GitHub Actions for automated workflows.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Container Images
-- Containers
-- GitHub
-- Packages
-- Registry
+  - Container Images
+  - Containers
+  - GitHub
+  - Packages
+  - Registry
 url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: github-container-registry:github-container-registry
-  name: GitHub Container Registry
-  description: GitHub Container Registry stores container images within your GitHub organization or personal account, allows
-    you to associate images with repositories, and provides fine-grained permissions with integration into GitHub Actions
-    workflows.
-  humanURL: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-  baseURL: https://api.github.com
-  tags:
-  - Container Images
-  - Containers
-  - GitHub
-  - Registry
-  properties:
+  - aid: github-container-registry:github-container-registry
+    name: GitHub Container Registry
+    description: >-
+      GitHub Container Registry stores container images within your GitHub organization or personal account, allows you
+      to associate images with repositories, and provides fine-grained permissions with integration into GitHub Actions
+      workflows.
+    humanURL: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+    baseURL: https://api.github.com
+    tags:
+      - Container Images
+      - Containers
+      - GitHub
+      - Registry
+    properties:
+      - type: Documentation
+        url: >-
+          https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+      - type: GettingStarted
+        url: >-
+          https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
+      - type: API Documentation
+        url: https://docs.github.com/en/rest/packages/packages
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/openapi/github-container-registry-openapi.yml
+      - type: Capabilities
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
+      - type: Rules
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
+      - type: Pricing
+        url: https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
+common:
+  - type: Website
+    url: https://github.com/features/packages
   - type: Documentation
     url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
   - type: GettingStarted
-    url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
-  - type: API Documentation
-    url: https://docs.github.com/en/rest/packages/packages
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/openapi/github-container-registry-openapi.yml
-  - type: Capabilities
-    url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
-  - type: Rules
-    url: https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
+    url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  - type: GitHubOrganization
+    url: https://github.com/github
   - type: Pricing
     url: https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
-  - type: NaftikoCapability
-    url: capabilities/github-container-registry-organization-packages.yaml
-  - type: NaftikoCapability
-    url: capabilities/github-container-registry-user-namespace-packages.yaml
-  - type: NaftikoCapability
-    url: capabilities/github-container-registry-user-packages.yaml
-common:
-- type: Website
-  url: https://github.com/features/packages
-- type: Documentation
-  url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-- type: GettingStarted
-  url: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-- type: GitHubOrganization
-  url: https://github.com/github
-- type: Pricing
-  url: https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
-- type: Blog
-  url: https://github.blog/
-- type: StatusPage
-  url: https://www.githubstatus.com/
-- type: SignUp
-  url: https://github.com/signup
-- type: LLMsTxt
-  url: https://docs.github.com/llms.txt
+  - type: Blog
+    url: https://github.blog/
+  - type: StatusPage
+    url: https://www.githubstatus.com/
+  - type: SignUp
+    url: https://github.com/signup
+  - type: LLMsTxt
+    url: https://docs.github.com/llms.txt
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
