@@ -65,9 +65,9 @@ common:
     url: https://github.blog/
   - type: StatusPage
     url: https://www.githubstatus.com/
-  - type: SignUp
+  - type: Signup
     url: https://github.com/signup
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.github.com/llms.txt
 maintainers:
   - FN: Kin Lane
