@@ -1,0 +1,238 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/github-container-registry-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 18
+  by_action_class:
+    connected: 11
+    acting: 7
+  by_consequence:
+    read: 11
+    write: 7
+  human_in_the_loop_required: 0
+operations:
+- path: /orgs/{org}/packages
+  method: get
+  operationId: listOrgPackages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orgs/{org}/packages/{package_type}/{package_name}
+  method: get
+  operationId: getOrgPackage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orgs/{org}/packages/{package_type}/{package_name}
+  method: delete
+  operationId: deleteOrgPackage
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orgs/{org}/packages/{package_type}/{package_name}/restore
+  method: post
+  operationId: restoreOrgPackage
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orgs/{org}/packages/{package_type}/{package_name}/versions
+  method: get
+  operationId: listOrgPackageVersions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+  method: get
+  operationId: getOrgPackageVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
+  method: delete
+  operationId: deleteOrgPackageVersion
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
+  method: post
+  operationId: restoreOrgPackageVersion
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/packages
+  method: get
+  operationId: listUserPackages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/packages/{package_type}/{package_name}
+  method: get
+  operationId: getUserPackage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/packages/{package_type}/{package_name}
+  method: delete
+  operationId: deleteUserPackage
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/packages/{package_type}/{package_name}/restore
+  method: post
+  operationId: restoreUserPackage
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user/packages/{package_type}/{package_name}/versions
+  method: get
+  operationId: listUserPackageVersions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+  method: get
+  operationId: getUserPackageVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user/packages/{package_type}/{package_name}/versions/{package_version_id}
+  method: delete
+  operationId: deleteUserPackageVersion
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users/{username}/packages
+  method: get
+  operationId: listPackagesForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users/{username}/packages/{package_type}/{package_name}
+  method: get
+  operationId: getPackageForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users/{username}/packages/{package_type}/{package_name}/versions
+  method: get
+  operationId: listPackageVersionsForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
