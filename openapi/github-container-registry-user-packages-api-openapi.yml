@@ -1,0 +1,166 @@
+openapi: 3.0.3
+info:
+  title: GitHub Container Registry Organization Packages User Packages API
+  description: REST API endpoints for managing container packages on GitHub Container Registry (ghcr.io) via the GitHub Packages API. Image push/pull operations use the OCI Distribution Spec at ghcr.io.
+  version: 1.0.0
+  contact:
+    name: GitHub
+    url: https://docs.github.com/en/rest/packages/packages
+servers:
+- url: https://api.github.com
+  description: GitHub REST API
+security:
+- BearerAuth: []
+tags:
+- name: User Packages
+  description: Manage container packages owned by the authenticated user
+paths:
+  /user/packages:
+    get:
+      summary: List packages for the authenticated user
+      operationId: listUserPackages
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of packages
+  /user/packages/{package_type}/{package_name}:
+    get:
+      summary: Get a package for the authenticated user
+      operationId: getUserPackage
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Package details
+    delete:
+      summary: Delete a package for the authenticated user
+      operationId: deleteUserPackage
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Package deleted
+  /user/packages/{package_type}/{package_name}/restore:
+    post:
+      summary: Restore a package for the authenticated user
+      operationId: restoreUserPackage
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Package restored
+  /user/packages/{package_type}/{package_name}/versions:
+    get:
+      summary: List package versions for a package owned by the authenticated user
+      operationId: listUserPackageVersions
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of package versions
+  /user/packages/{package_type}/{package_name}/versions/{package_version_id}:
+    get:
+      summary: Get a package version for the authenticated user
+      operationId: getUserPackageVersion
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_version_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Package version
+    delete:
+      summary: Delete a package version for the authenticated user
+      operationId: deleteUserPackageVersion
+      tags:
+      - User Packages
+      parameters:
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_version_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Version deleted
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

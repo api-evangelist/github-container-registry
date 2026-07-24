@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: GitHub Container Registry Organization Packages User Namespace Packages API
+  description: REST API endpoints for managing container packages on GitHub Container Registry (ghcr.io) via the GitHub Packages API. Image push/pull operations use the OCI Distribution Spec at ghcr.io.
+  version: 1.0.0
+  contact:
+    name: GitHub
+    url: https://docs.github.com/en/rest/packages/packages
+servers:
+- url: https://api.github.com
+  description: GitHub REST API
+security:
+- BearerAuth: []
+tags:
+- name: User Namespace Packages
+  description: View packages owned by a user
+paths:
+  /users/{username}/packages:
+    get:
+      summary: List packages for a user
+      operationId: listPackagesForUser
+      tags:
+      - User Namespace Packages
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_type
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of packages
+  /users/{username}/packages/{package_type}/{package_name}:
+    get:
+      summary: Get a package for a user
+      operationId: getPackageForUser
+      tags:
+      - User Namespace Packages
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Package details
+  /users/{username}/packages/{package_type}/{package_name}/versions:
+    get:
+      summary: List package versions for a package owned by a user
+      operationId: listPackageVersionsForUser
+      tags:
+      - User Namespace Packages
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: package_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of package versions
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token
