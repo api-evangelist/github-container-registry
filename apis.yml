@@ -5,7 +5,20 @@ description: >-
   associate images with repositories, and provides fine-grained permissions for managing access. It supports Docker and
   OCI image formats and is integrated with GitHub Actions for automated workflows.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/github-container-registry.png
 tags:
   - Container Images
   - Containers
@@ -17,39 +30,90 @@ created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: github-container-registry:github-container-registry
-    name: GitHub Container Registry
-    description: >-
-      GitHub Container Registry stores container images within your GitHub organization or personal account, allows you
-      to associate images with repositories, and provides fine-grained permissions with integration into GitHub Actions
-      workflows.
-    humanURL: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-    baseURL: https://api.github.com
-    tags:
-      - Container Images
-      - Containers
-      - GitHub
-      - Registry
-    properties:
-      - type: Documentation
-        url: >-
-          https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-      - type: GettingStarted
-        url: >-
-          https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
-      - type: API Documentation
-        url: https://docs.github.com/en/rest/packages/packages
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/openapi/github-container-registry-openapi.yml
-      - type: Capabilities
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
-      - type: Rules
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
-      - type: Pricing
-        url: https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
+- aid: github-container-registry:github-container-registry-organization-packages-api
+  name: GitHub Container Registry Organization Packages API
+  description: Manage container packages owned by an organization
+  humanURL: >-
+    https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  baseURL: https://api.github.com
+  tags:
+  - Organization Packages
+  properties:
+  - type: OpenAPI
+    url: openapi/github-container-registry-organization-packages-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  - type: GettingStarted
+    url: >-
+      https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
+  - type: API Documentation
+    url: https://docs.github.com/en/rest/packages/packages
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
+  - type: Pricing
+    url: >-
+      https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
+- aid: github-container-registry:github-container-registry-user-namespace-packages-api
+  name: GitHub Container Registry User Namespace Packages API
+  description: View packages owned by a user
+  humanURL: >-
+    https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  baseURL: https://api.github.com
+  tags:
+  - User Namespace Packages
+  properties:
+  - type: OpenAPI
+    url: openapi/github-container-registry-user-namespace-packages-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  - type: GettingStarted
+    url: >-
+      https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
+  - type: API Documentation
+    url: https://docs.github.com/en/rest/packages/packages
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
+  - type: Pricing
+    url: >-
+      https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
+- aid: github-container-registry:github-container-registry-user-packages-api
+  name: GitHub Container Registry User Packages API
+  description: Manage container packages owned by the authenticated user
+  humanURL: >-
+    https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  baseURL: https://api.github.com
+  tags:
+  - User Packages
+  properties:
+  - type: OpenAPI
+    url: openapi/github-container-registry-user-packages-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+  - type: GettingStarted
+    url: >-
+      https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
+  - type: API Documentation
+    url: https://docs.github.com/en/rest/packages/packages
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml
+  - type: Pricing
+    url: >-
+      https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
 common:
   - type: AgenticAccess
     url: agentic-access/github-container-registry-agentic-access.yml
