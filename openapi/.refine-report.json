@@ -1,0 +1,18 @@
+{
+  "provider": "github-container-registry",
+  "sources": [
+    "github-container-registry-organization-packages-api-openapi.yml",
+    "github-container-registry-user-namespace-packages-api-openapi.yml",
+    "github-container-registry-user-packages-api-openapi.yml"
+  ],
+  "outputs": [
+    "github-container-registry-organization-packages-api-openapi.yml",
+    "github-container-registry-user-namespace-packages-api-openapi.yml",
+    "github-container-registry-user-packages-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,451 @@
+openapi: 3.0.3
+info:
+  title: GitHub Container Registry API
+  description: >-
+    REST API endpoints for managing container packages on GitHub Container Registry (ghcr.io)
+    via the GitHub Packages API. Image push/pull operations use the OCI Distribution Spec at ghcr.io.
+  version: 1.0.0
+  contact:
+    name: GitHub
+    url: https://docs.github.com/en/rest/packages/packages
+servers:
+  - url: https://api.github.com
+    description: GitHub REST API
+paths:
+  /orgs/{org}/packages:
+    get:
+      summary: List packages for an organization
+      operationId: listOrgPackages
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [npm, maven, rubygems, docker, nuget, container]
+      responses:
+        '200':
+          description: A list of packages
+  /orgs/{org}/packages/{package_type}/{package_name}:
+    get:
+      summary: Get a package for an organization
+      operationId: getOrgPackage
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Package details
+    delete:
+      summary: Delete a package for an organization
+      operationId: deleteOrgPackage
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Package deleted
+  /orgs/{org}/packages/{package_type}/{package_name}/restore:
+    post:
+      summary: Restore a package for an organization
+      operationId: restoreOrgPackage
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Package restored
+  /orgs/{org}/packages/{package_type}/{package_name}/versions:
+    get:
+      summary: Get all package versions for a package owned by an organization
+      operationId: listOrgPackageVersions
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of package versions
+  /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}:
+    get:
+      summary: Get a package version for an organization
+      operationId: getOrgPackageVersion
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_version_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Package version
+    delete:
+      summary: Delete a package version for an organization
+      operationId: deleteOrgPackageVersion
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_version_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Version deleted
+  /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore:
+    post:
+      summary: Restore a package version for an organization
+      operationId: restoreOrgPackageVersion
+      tags:
+        - Organization Packages
+      parameters:
+        - name: org
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_version_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Version restored
+  /user/packages:
+    get:
+      summary: List packages for the authenticated user
+      operationId: listUserPackages
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of packages
+  /user/packages/{package_type}/{package_name}:
+    get:
+      summary: Get a package for the authenticated user
+      operationId: getUserPackage
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Package details
+    delete:
+      summary: Delete a package for the authenticated user
+      operationId: deleteUserPackage
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Package deleted
+  /user/packages/{package_type}/{package_name}/restore:
+    post:
+      summary: Restore a package for the authenticated user
+      operationId: restoreUserPackage
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Package restored
+  /user/packages/{package_type}/{package_name}/versions:
+    get:
+      summary: List package versions for a package owned by the authenticated user
+      operationId: listUserPackageVersions
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of package versions
+  /user/packages/{package_type}/{package_name}/versions/{package_version_id}:
+    get:
+      summary: Get a package version for the authenticated user
+      operationId: getUserPackageVersion
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_version_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Package version
+    delete:
+      summary: Delete a package version for the authenticated user
+      operationId: deleteUserPackageVersion
+      tags:
+        - User Packages
+      parameters:
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_version_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Version deleted
+  /users/{username}/packages:
+    get:
+      summary: List packages for a user
+      operationId: listPackagesForUser
+      tags:
+        - User Namespace Packages
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of packages
+  /users/{username}/packages/{package_type}/{package_name}:
+    get:
+      summary: Get a package for a user
+      operationId: getPackageForUser
+      tags:
+        - User Namespace Packages
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Package details
+  /users/{username}/packages/{package_type}/{package_name}/versions:
+    get:
+      summary: List package versions for a package owned by a user
+      operationId: listPackageVersionsForUser
+      tags:
+        - User Namespace Packages
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: package_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of package versions
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token
+security:
+  - BearerAuth: []
+tags:
+  - name: Organization Packages
+    description: Manage container packages owned by an organization
+  - name: User Packages
+    description: Manage container packages owned by the authenticated user
+  - name: User Namespace Packages
+    description: View packages owned by a user
