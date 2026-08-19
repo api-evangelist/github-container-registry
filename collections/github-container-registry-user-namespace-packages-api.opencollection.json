@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GitHub Container Registry Organization Packages User Namespace Packages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Namespace Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List packages for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/users/:username/packages",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List packages for a user"
+        },
+        {
+          "info": {
+            "name": "Get a package for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/users/:username/packages/:package_type/:package_name",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a package for a user"
+        },
+        {
+          "info": {
+            "name": "List package versions for a package owned by a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/users/:username/packages/:package_type/:package_name/versions",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List package versions for a package owned by a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

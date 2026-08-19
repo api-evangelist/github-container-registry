@@ -1,0 +1,258 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GitHub Container Registry Organization Packages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization Packages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List packages for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/orgs/:org/packages",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List packages for an organization"
+        },
+        {
+          "info": {
+            "name": "Get a package for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a package for an organization"
+        },
+        {
+          "info": {
+            "name": "Delete a package for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a package for an organization"
+        },
+        {
+          "info": {
+            "name": "Restore a package for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name/restore",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore a package for an organization"
+        },
+        {
+          "info": {
+            "name": "Get all package versions for a package owned by an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name/versions",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get all package versions for a package owned by an organization"
+        },
+        {
+          "info": {
+            "name": "Get a package version for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name/versions/:package_version_id",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_version_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a package version for an organization"
+        },
+        {
+          "info": {
+            "name": "Delete a package version for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name/versions/:package_version_id",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_version_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a package version for an organization"
+        },
+        {
+          "info": {
+            "name": "Restore a package version for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.github.com/orgs/:org/packages/:package_type/:package_name/versions/:package_version_id/restore",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "package_version_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore a package version for an organization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
