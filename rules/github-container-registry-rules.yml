@@ -1,5 +1,5 @@
-aid: github-container-registry:rules
-name: GitHub Container Registry Rules
+x-aid: github-container-registry:rules
+x-name: GitHub Container Registry Rules
 description: Operational rules and constraints for using GitHub Container Registry and the GitHub Packages API.
 rules:
   - name: Authentication

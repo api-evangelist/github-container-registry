@@ -13,6 +13,11 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "github-container-registry-organization-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "github-container-registry-user-namespace-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "github-container-registry-user-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
