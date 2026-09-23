@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: GitHub Container Registry Organization Packages User Namespace Packages API
+  title: GitHub Container Registry User Namespace Packages API
   description: REST API endpoints for managing container packages on GitHub Container Registry (ghcr.io) via the GitHub Packages API. Image push/pull operations use the OCI Distribution Spec at ghcr.io.
   version: 1.0.0
   contact:

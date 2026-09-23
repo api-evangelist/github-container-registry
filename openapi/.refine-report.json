@@ -1,9 +1,7 @@
 {
   "provider": "github-container-registry",
   "sources": [
-    "github-container-registry-organization-packages-api-openapi.yml",
-    "github-container-registry-user-namespace-packages-api-openapi.yml",
-    "github-container-registry-user-packages-api-openapi.yml"
+    "_original/github-container-registry-openapi.yml"
   ],
   "outputs": [
     "github-container-registry-organization-packages-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "github-container-registry-organization-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "github-container-registry-user-namespace-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "github-container-registry-user-packages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "github-container-registry-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "github-container-registry-organization-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "github-container-registry-user-namespace-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "github-container-registry-user-packages-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
