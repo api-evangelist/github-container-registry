@@ -127,6 +127,12 @@ apis:
     url: >-
       https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages
 common:
+  - type: Plans
+    url: plans/github-container-registry-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/github-container-registry-rate-limits.yml
+  - type: FinOps
+    url: finops/github-container-registry-finops.yml
   - type: AgenticAccess
     url: agentic-access/github-container-registry-agentic-access.yml
   - type: Authentication
