@@ -6,12 +6,12 @@ edges:
   relationship: compatible
   direction: provider-built
   shape: oci-distribution
-  type: docs
+  type: contract
   degree: declared-unqualified
-  evidence: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-  evidence_kind: own-docs
-  evidence_file: https://github.com/api-evangelist/github-container-registry/blob/main/evidence/compatibility/github-container-registry-oci-distribution-1.md
-  quote: Open Container Initiative (OCI) Specifications
+  evidence: https://github.com/api-evangelist/github-container-registry/blob/main/openapi/github-container-registry-organization-packages-api-openapi.yml#L4
+  evidence_kind: own-contract
+  quote: 'description: REST API endpoints for managing container packages on GitHub Container Registry (ghcr.io)
+    via the GitHub Packages API. Image push/pull operations use the OCI Distribution Spec at ghcr.io.'
   detected_by: sweep-shape-compat.py
   first_seen: '2026-10-13'
 generated: '2026-10-13'
