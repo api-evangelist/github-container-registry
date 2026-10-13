@@ -1,0 +1,12 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+page: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+file: github-container-registry-oci-distribution-1.md
+bytes: 14957
+sha256: 47635e885f09825b7bc08cffce48cec7f582bae37a742f8bfe9e6edc0bf7ba54
+anchor: open-container-initiative
+shape: oci-distribution
+classification: declares-compatibility
+quote: Open Container Initiative (OCI) Specifications
+note: text extracted from the provider's own page (tags stripped), saved for evidence
