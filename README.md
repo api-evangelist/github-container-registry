@@ -1,4 +1,4 @@
-# GitHub Container Registry (github-container-registry)
+# GitHub Container Registry
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,66 +66,128 @@
 
 GitHub Container Registry stores container images within your GitHub organization or personal account, allows you to associate images with repositories, and provides fine-grained permissions for managing access. It supports Docker and OCI image formats and is integrated with GitHub Actions for automated workflows.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/apis.yml)
+**Areas:** Container Images · Containers · GitHub · Packages · Registry
 
-## Scope
+## GitHub Container Registry on APIs.io
 
-- **Type:** Index
+Everything profiled for GitHub Container Registry is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/github-container-registry/](https://apis.io/providers/github-container-registry/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Container Images
-- Containers
-- GitHub
-- Packages
-- Registry
+- [GitHub Container Registry Organization Packages API](https://apis.io/apis/github-container-registry/github-container-registry-organization-packages-api/) — Manage container packages owned by an organization
+- [GitHub Container Registry User Namespace Packages API](https://apis.io/apis/github-container-registry/github-container-registry-user-namespace-packages-api/) — View packages owned by a user
+- [GitHub Container Registry User Packages API](https://apis.io/apis/github-container-registry/github-container-registry-user-packages-api/) — Manage container packages owned by the authenticated user
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### GitHub Container Registry
+Which operations an agent can call, which act, and which need a human in the loop.
 
-GitHub Container Registry stores container images within your GitHub organization or personal account, allows you to associate images with repositories, and provides fine-grained permissions with integration into GitHub Actions workflows.
+- [Github Container Registry Agentic Access](https://apis.io/agentic-access/github-container-registry/github-container-registry-agentic-access/)
 
-- **Human URL:** [https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- **Base URL:** `https://api.github.com`
+#### Collections (4)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Container Images
-- Containers
-- GitHub
-- Registry
+- [GitHub Container Registry API](https://apis.io/collections/github-container-registry/open-github-container-registry/)
+- [GitHub Container Registry Organization Packages API](https://apis.io/collections/github-container-registry/open-github-container-registry-organization-packages-api/)
+- [GitHub Container Registry Organization Packages User Namespace Packages API](https://apis.io/collections/github-container-registry/open-github-container-registry-user-namespace-packages-api/)
+- [GitHub Container Registry Organization Packages User Packages API](https://apis.io/collections/github-container-registry/open-github-container-registry-user-packages-api/)
 
-#### Properties
+#### Governance rules (1)
 
-- [Documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [Getting Started](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry)
-- [A P I  Documentation](https://docs.github.com/en/rest/packages/packages)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/openapi/github-container-registry-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Capabilities](https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/capabilities/github-container-registry-capabilities.yml)
-- [Rules](https://raw.githubusercontent.com/api-evangelist/github-container-registry/refs/heads/main/rules/github-container-registry-rules.yml)
-- [Pricing](https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages)
-- [Postman Collection](collections/github-container-registry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/github-container-registry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-## Common Properties
+- [GitHub Container Registry API Rules](https://apis.io/rules/github-container-registry/github-container-registry-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Github Container Registry Authentication](https://apis.io/security/github-container-registry/github-container-registry-authentication/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Github Container Registry Plans Pricing](https://apis.io/plans/github-container-registry/github-container-registry-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Github Container Registry Rate Limits](https://apis.io/rate-limits/github-container-registry/github-container-registry-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Github Container Registry Finops](https://apis.io/finops/github-container-registry/github-container-registry-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://github.com/features/packages)
 - [Documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [Getting Started](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [GitHub Organization](https://github.com/github)
+- [Getting started](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 - [Pricing](https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages)
 - [Blog](https://github.blog/)
-- [Status Page](https://www.githubstatus.com/)
-- [Sign Up](https://github.com/signup)
-- [L L Ms Txt](https://docs.github.com/llms.txt)
+- [GitHub](https://github.com/github)
+- [Status](https://www.githubstatus.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 44.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 42.9 |
+| Access clarity | 31.6 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/github-container-registry/](https://apis.io/providers/github-container-registry/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for GitHub Container Registry: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/github-container-registry/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
